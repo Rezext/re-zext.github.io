@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun, Sayangku Nadiani!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #FF6B8B; /* Warna pink utama untuk highlight */
+            --secondary-pink: #FEE7E6; /* Pink lembut untuk background */
+            --cream: #FFF5E0; /* Warna krem untuk kue/icing */
+            --dark-text: #4A4A4A; /* Warna teks gelap */
+            --light-text: #6B7280; /* Warna teks lebih terang */
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif; /* Font utama yang bersih */
+            background: linear-gradient(135deg, var(--secondary-pink), #FFC0CB); /* Gradasi background lebih elegan */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Sembunyikan scrollbar */
+            color: var(--dark-text);
+            text-align: center;
+            flex-direction: column;
+            position: relative;
+            animation: fadeInBackground 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInBackground {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 40px 50px; /* Padding lebih besar */
+            border-radius: 20px; /* Sudut lebih membulat */
+            box-shadow: 0 15px 40px var(--shadow-medium); /* Bayangan lebih dalam */
+            max-width: 800px; /* Lebar maksimum lebih besar */
+            width: 90%; /* Responsif */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInSlideUp 1s forwards ease-out 0.5s; /* Delay untuk muncul setelah background */
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive; /* Font yang menarik untuk judul */
+            color: var(--primary-pink);
+            margin-bottom: 25px;
+            font-size: 3.5em; /* Ukuran lebih besar */
+            text-shadow: 2px 2px 5px var(--shadow-light);
+        }
+
+        .cake-container {
+            position: relative;
+            margin: 40px 0 60px 0; /* Jarak atas/bawah lebih renggang */
+            cursor: pointer;
+            animation: popIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards 1s; /* Animasi pop in */
+            opacity: 0; /* Awalnya sembunyikan */
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5) rotate(0deg); opacity: 0; }
+            70% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .cake {
+            width: 300px; /* Kue lebih besar */
+            height: 180px;
+            background-color: var(--cream);
+            border-radius: 50% / 20%;
+            border: 8px solid var(--primary-pink); /* Border lebih tebal */
+            box-shadow: inset 0 -15px 0 rgba(0, 0, 0, 0.08), 0 5px 15px var(--shadow-light);
+            position: relative;
+            z-index: 1;
+        }
+
+        .icing {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px; /* Icing lebih tebal */
+            background-color: #F8B4BE; /* Icing warna pink lembut */
+            border-radius: 50% / 100%;
+            border-bottom: 8px solid var(--primary-pink);
+            z-index: 2;
+        }
+
+        .candle-wrapper {
+            position: absolute;
+            top: -65px; /* Lebih tinggi di atas kue */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px; /* Jarak antar lilin lebih rapat tapi tetap jelas */
+            z-index: 3;
+            flex-wrap: wrap; /* Agar lilin bisa wrapping jika terlalu banyak */
+            justify-content: center;
+            width: 100%; /* Memastikan lilin tetap di tengah */
+        }
+
+        .candle {
+            width: 12px; /* Lilin sedikit lebih lebar */
+            height: 50px; /* Lilin sedikit lebih tinggi */
+            background-color: #FFFFFF;
+            border-radius: 3px;
+            position: relative;
+            box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.2s ease-out, opacity 0.5s ease-out; /* Tambah transisi opacity */
+        }
+
+        .candle:hover {
+            transform: scale(1.1);
+        }
+
+        .flame {
+            position: absolute;
+            top: -20px; /* Api lebih tinggi */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 25px;
+            background: radial-gradient(circle at 50% 0, #FFD700, #FFA500, #FF4500); /* Api lebih gradien */
+            border-radius: 50% 50% 25% 25%;
+            filter: blur(3px); /* Blur lebih halus */
+            animation: pulseFlame 1s infinite alternate;
+            z-index: 4;
+        }
+
+        @keyframes pulseFlame {
+            0% { transform: translateX(-50%) scale(1); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1.15); opacity: 0.9; }
+        }
+
+        .flame.blown-out {
+            background: none;
+            width: 0;
+            height: 0;
+            animation: none;
+            opacity: 0; /* Pastikan api benar-benar pudar */
+            transition: all 0.3s ease-in;
+        }
+
+        .candle.blown-out-effect {
+            opacity: 0.5; /* Lilin yang sudah ditiup sedikit pudar */
+            transform: translateY(5px);
+        }
+
+        .message-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px var(--shadow-light);
+            margin-top: 40px; /* Jarak lebih jauh dari kue */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .message-box.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .message-line {
+            margin-bottom: 18px; /* Jarak antar baris teks */
+            line-height: 1.8; /* Jarak baris lebih longgar */
+            font-size: 1.25em; /* Ukuran font teks utama */
+            color: var(--dark-text);
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .message-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .message-line strong {
+            color: var(--primary-pink);
+            font-weight: 700; /* Lebih tebal */
+        }
+
+        /* Tombol Play/Pause */
+        #audioControl {
+            margin-top: 25px; /* Jarak dari bawah elemen sebelumnya */
+            padding: 12px 25px;
+            background-color: var(--primary-pink);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.15em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 6px 15px var(--shadow-light);
+        }
+
+        #audioControl:hover {
+            background-color: #E65A7A;
+            transform: translateY(-2px);
+        }
+
+        #audioControl:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px var(--shadow-light);
+        }
+
+        /* Efek Konfeti */
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: var(--color);
+            opacity: 0;
+            animation: fallConfetti 4s forwards;
+            border-radius: 50%;
+            z-index: 1;
+            left: var(--left); /* Posisi horizontal random */
+            transform: translateY(-100vh) rotate(var(--rotate-deg)); /* Mulai dari atas */
+        }
+
+        @keyframes fallConfetti {
+            0% { transform: translateY(-100vh) rotate(var(--rotate-deg)); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(calc(var(--rotate-deg) + 720deg)); opacity: 0; }
+        }
+
+        /* Efek Hati */
+        .heart {
+            position: absolute;
+            font-size: 2.5em; /* Hati lebih besar */
+            color: #FF69B4; /* Pink hati */
+            animation: floatUpHeart 4s ease-out forwards;
+            opacity: 0;
+            z-index: 1;
+            left: var(--left); /* Posisi horizontal random */
+            bottom: -50px; /* Mulai dari bawah layar */
+        }
+
+        @keyframes floatUpHeart {
+            0% { transform: translateY(0) scale(0); opacity: 0; }
+            20% { opacity: 1; transform: scale(1.2); }
+            100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+            .container {
+                padding: 25px 30px;
+            }
+            .cake {
+                width: 220px;
+                height: 130px;
+            }
+            .candle-wrapper {
+                top: -55px;
+                gap: 8px;
+            }
+            .candle {
+                width: 10px;
+                height: 40px;
+            }
+            .message-line {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="birthdaySong" loop>
+        <source src="jamrud_selamat_ulang_tahun.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container" id="mainContainer">
+        <h1>Tiup Lilin Ulang Tahunmu, Sayang!</h1>
+
+        <div class="cake-container">
+            <div class="cake">
+                <div class="icing"></div>
+            </div>
+            <div class="candle-wrapper" id="candleWrapper">
+                </div>
+        </div>
+
+        <p style="font-size: 1.1em; color: var(--light-text); margin-bottom: 30px;">
+            <strong style="color: var(--primary-pink);">Klik lilin</strong> untuk meniupnya dan membaca pesan spesial!
+        </p>
+        <button id="audioControl">Putar Musik</button>
+
+        <div class="message-box" id="birthdayMessage">
+            </div>
+    </div>
+
+    <script>
+        const birthdayName = "Nadiani Zulfa Burhanuddin";
+        const birthdayDate = "13 September 2025";
+        const birthdayAge = 20;
+        // UBAH INI: Lilin hanya 1
+        const numberOfCandles = 1;
+        let blownOutCandles = 0;
+        let currentMessageLine = 0;
+
+        const candleWrapper = document.getElementById('candleWrapper');
+        const birthdayMessageDiv = document.getElementById('birthdayMessage');
+        const mainContainer = document.getElementById('mainContainer');
+        const audio = document.getElementById('birthdaySong');
+        const audioControl = document.getElementById('audioControl');
+
+        // Text ucapan yang akan muncul bertahap
+        const birthdayMessageLines = [
+            `Ucapan Selamat Ulang Tahun untuk <strong>${birthdayName}</strong>`,
+            `Selamat ulang tahun yang ke-<strong>${birthdayAge}</strong>, <strong>${birthdayName}</strong> sayangkuuuu!`,
+            `Di tanggal <strong>${birthdayDate}</strong> ini, aku ingin mengucapkan selamat atas bertambahnya usiamu yang semakin dewasa dan cantik.`,
+            `Semoga di hari spesialmu ini, kamu merasakan kebahagiaan yang luar biasa dan mengetahui betapa berharganya dirimu di hatiku.`,
+            `Sayaanggg, aku berdoa semoga Allah SWT selalu memberikan kamu umur yang panjang, kesehatan yang sempurna, dan kebahagiaan yang tak pernah putus.`,
+            `Semoga tubuhmu selalu sehat dan kuat untuk menjalani setiap aktivitas, mimpi-mimpimu terwujud satu per satu, dan setiap langkahmu dimudahkan oleh Yang Maha Kuasa.`,
+            `Aku berharap di usia yang ke-<strong>${birthdayAge}</strong> ini, kamu semakin bersinar dan mencapai semua yang kamu impikan.`,
+            `Terima kasih banyak, Nadiani, karena sudah memilih akuuu untuk menjadi tempat bersandarmu selama ini.`,
+            `Terima kasih karena sudah mempercayaiku untuk menjadi bagian dari hidupmu, menjadi teman bercerita di setiap momen suka dan duka, dan menjadi sumber kekuatan saat kamu merasa lelah.`,
+            `Kehadiranmu dalam hidupku adalah anugerah yang tak ternilai, dan aku merasa sangat beruntung bisa menjadi orang yang kamu pilih untuk saling menguatkan.`,
+            `Maafkan aku jika selama ini ada kata-kata atau sikapku yang menyakiti perasaanmu, sayang.`,
+            `Maaf jika ada momen-momen dimana aku tidak bisa menjadi yang terbaik untukmu atau tidak bisa memahami perasaanmu dengan sempurna.`,
+            `Aku manusia biasa yang pasti punya kekurangan, tapi aku berjanji akan terus belajar untuk menjadi lebih baik lagi demi kebahagiaan kita kedua.`,
+            `Semoga kamu selalu bisa memaafkan kesalahan-kesalahanku dan tetap sabar menghadapi sifatku yang kadang menyebalkan.`,
+            `Sekali lagi, selamat ulang tahun yang ke-<strong>${birthdayAge}</strong>, <strong>${birthdayName}</strong> cintakuuuu!`,
+            `Semoga tahun ini menjadi tahun yang penuh berkah, kebahagiaan, dan pencapaian luar biasa untukmu.`,
+            `Aku doakan semoga kita bisa terus bersama melewati setiap momen indah di masa depan, saling mendukung dalam menggapai mimpi masing-masing, dan tumbuh bersama menjadi pribadi yang lebih baik.`,
+            `Happy birthday, my loveeee! ❤️`
+        ];
+
+        // Fungsi untuk membuat lilin
+        function createCandle() {
+            const candle = document.createElement('div');
+            candle.classList.add('candle');
+
+            const flame = document.createElement('div');
+            flame.classList.add('flame');
+            candle.appendChild(flame);
+
+            candle.addEventListener('click', () => {
+                if (!flame.classList.contains('blown-out')) {
+                    flame.classList.add('blown-out');
+                    candle.classList.add('blown-out-effect'); // Tambah efek pudar pada lilin
+                    blownOutCandles++;
+                    checkAllCandlesBlownOut();
+                }
+            });
+            return candle;
+        }
+
+        // Generate lilin sesuai jumlah
+        for (let i = 0; i < numberOfCandles; i++) {
+            candleWrapper.appendChild(createCandle());
+        }
+
+        // Cek apakah semua lilin sudah ditiup
+        function checkAllCandlesBlownOut() {
+            if (blownOutCandles === numberOfCandles) {
+                audio.pause();
+                audioControl.textContent = "Musik Dimatikan";
+                audioControl.disabled = true;
+                audioControl.style.opacity = 0; // Pudar tombol
+                audioControl.style.pointerEvents = 'none'; // Nonaktifkan klik
+                birthdayMessageDiv.classList.add('show');
+                setTimeout(displayMessageLineByLine, 500); // Sedikit delay sebelum teks muncul
+            }
+        }
+
+        // Fungsi untuk menampilkan pesan baris per baris
+        function displayMessageLineByLine() {
+            if (currentMessageLine < birthdayMessageLines.length) {
+                const p = document.createElement('p');
+                p.classList.add('message-line');
+                p.innerHTML = birthdayMessageLines[currentMessageLine];
+                birthdayMessageDiv.appendChild(p);
+
+                // Force reflow untuk animasi
+                void p.offsetWidth;
+                p.classList.add('visible');
+
+                // Hitung delay berdasarkan panjang teks, minimal 1.5 detik
+                const delay = Math.max(1500, birthdayMessageLines[currentMessageLine].length * 40); // 40ms per karakter
+                currentMessageLine++;
+                setTimeout(displayMessageLineByLine, delay);
+            } else {
+                // Semua teks sudah tampil, panggil efek meriah
+                triggerConfetti();
+                triggerHearts();
+            }
+        }
+
+        // --- Efek Meriah ---
+
+        // Konfeti
+        function triggerConfetti() {
+            const colors = ['#FFC0CB', '#FFDAB9', '#ADD8E6', '#90EE90', '#F08080']; // Warna konfeti yang cerah
+            for (let i = 0; i < 150; i++) { // Lebih banyak konfeti
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = Math.random() * 2 + 4 + 's'; // 4-6 detik
+                confetti.style.animationDelay = Math.random() * 1 + 's'; // Delay awal
+                confetti.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+                confetti.style.setProperty('--rotate-deg', Math.random() * 360 + 'deg');
+                document.body.appendChild(confetti);
+
+                confetti.addEventListener('animationend', () => {
+                    confetti.remove();
+                });
+            }
+        }
+
+        // Hati Berterbangan
+        function triggerHearts() {
+            for (let i = 0; i < 50; i++) { // Lebih banyak hati
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.bottom = '-50px'; // Mulai dari bawah layar
+                heart.style.animationDuration = Math.random() * 2 + 4 + 's'; // 4-6 detik
+                heart.style.animationDelay = Math.random() * 1 + 's';
+                document.body.appendChild(heart);
+
+                heart.addEventListener('animationend', () => {
+                    heart.remove();
+                });
+            }
+        }
+
+        // Kontrol Audio
+        let isPlaying = false;
+        audioControl.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                audioControl.textContent = "Putar Musik";
+            } else {
+                audio.play().catch(error => {
+                    console.error("Gagal memutar audio:", error);
+                    alert("Browser membutuhkan interaksi pengguna untuk memutar audio. Silakan klik lagi untuk memutar musik.");
+                });
+                audioControl.textContent = "Hentikan Musik";
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Untuk memastikan animasi container berjalan saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            mainContainer.style.opacity = 1;
+            mainContainer.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>
